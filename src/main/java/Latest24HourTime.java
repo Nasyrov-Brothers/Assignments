@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Latest24HourTime {
     /**
      * Given an array arr of 4 digits, find the latest 24-hour time that can be made using each digit exactly once.
@@ -26,17 +28,49 @@ public class Latest24HourTime {
 
     public static void main(String[] args) {
         Latest24HourTime assignment = new Latest24HourTime();
-        int[] numbers = {4, 2, 3, 1};
-        System.out.println(assignment.getLatestTime(numbers));
+        int[] numbers = {1, 2, 3, 4};
+        System.out.println(Arrays.toString(numbers) + " => " + assignment.getLatestTime(numbers));
+        numbers = new int[] {5, 5, 5, 5};
+        System.out.println(Arrays.toString(numbers) + " => " + assignment.getLatestTime(numbers));
+        numbers = new int[] {0, 0, 0, 0};
+        System.out.println(Arrays.toString(numbers) + " => " + assignment.getLatestTime(numbers));
+        numbers = new int[] {0, 0, 1, 0};
+        System.out.println(Arrays.toString(numbers) + " => " + assignment.getLatestTime(numbers));
+        numbers = new int[] {1, 2, 1, 2};
+        System.out.println(Arrays.toString(numbers) + " => " + assignment.getLatestTime(numbers));
     }
 
     public String getLatestTime(int[] array) {
-        int[] time = new int[array.length];
+        int[] time = {-1, -1, -1, -1};
         for (int i = 0; i < array.length; i++) {
+            if (time[0] < array[i] && array[i] <= 2 && array[i] != -1) {
+                int temp = array[i];
+                array[i] = time[0];
+                time[0] = temp;
+            }
 
+            if (time[1] < array[i] && array[i] <= 3 && array[i] != -1) {
+                int temp = array[i];
+                array[i] = time[1];
+                time[1] = temp;
+            }
 
+            if (time[2] < array[i] && array[i] <= 5 && array[i] != -1) {
+                int temp = array[i];
+                array[i] = time[2];
+                time[2] = temp;
+            }
 
+            if (time[3] < array[i] && array[i] <= 9 && array[i] != -1) {
+                int temp = array[i];
+                array[i] = time[3];
+                time[3] = temp;
+            }
         }
-        return "";
+        if (Arrays.toString(time).contains("-1")) {
+            return "";
+        }
+        return "" + time[0] + time[1] + ":" + time[2] + time[3];
     }
+
 }
