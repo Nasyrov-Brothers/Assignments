@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class RomanNumerals {
     /* Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
         Symbol       Value
@@ -41,7 +43,8 @@ public class RomanNumerals {
         It is guaranteed that s is a valid roman numeral in the range [1, 3999]. */
 
     public static void main(String[] args) {
-
+        Scanner sn = new Scanner(System.in);
+        System.out.println();
     }
 
 }
